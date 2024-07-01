@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+
+{% block title %} Task Details {% endblock %}
+
+{% block content %}
+<form>
+    <div class="container w-50">
+        <h1> List of Tasks </h1>
+    
+        {% if tasks %}
+        <table class="table  table-hover table-sm">
+            <thead>
+                <td>Id</td>
+                <td>User</td>
+                <td>Title</td>
+                <td>Description</td>
+                <td>Options&nbsp;</td> 
+                <td>&nbsp;</td>
+            </thead>
+                {% for task in tasks %}
+                    <tr>
+                        <td><a href="#">{{task.id}}</a></td>
+                        <td class="text-success"><b>{{task.user.username}}</b></td>
+                        <td>{{task.title}}</td>
+                        <td>{{task.description}}</td>
+                        <td><a class="btn btn-warning" href="http://localhost:8000/task/update/{{ task.id }}">Update</a></td>
+                        <td><a class="btn btn-secondary" href="http://localhost:8000/task/delete/{{ task.id }}">Delete</a></td>
+                    </tr>
+                {% endfor %}
+        </table>
+        {% else %}
+            <p class="text-danger">You have no created any task</p>
+        {% endif %}
+        <a class="btn btn-success" href="{{url_for('create_task')}}">Create a new task</a>
+    </div>
+</form>
+{% endblock %}

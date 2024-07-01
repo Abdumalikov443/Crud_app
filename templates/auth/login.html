@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block title %} Login Page {% endblock %}
+
+{% block content %}
+
+  <h1 class="text-center mt-2">Login</h1>
+
+  <form class="mx-5 p-3" method="post" action="/auth/login">
+    <div class="form-group">
+      <label for="formGroupExampleInput">Username_or_Email</label>
+      <input type="text" class="form-control" id="formGroupExampleInput" name="username_or_email" placeholder="Enter Username or Email">
+    </div>
+    <div class="form-group">
+      <label for="formGroupExampleInput2">Password</label>
+      <input type="password" class="form-control" id="formGroupExampleInput2" name="password" placeholder="Enter Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    <p>If you don't have account, pls <a href="{{url_for('signup')}}">register</a></p>
+
+  </form>
+{% endblock %}
